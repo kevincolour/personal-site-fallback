@@ -4,8 +4,8 @@
   "homepage": "https://mldangelo.com/",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/mldangelo/personal-site.git"
+   "type": "web",
+    "url": "https://github.com/kevincolour/Personal-Website-React.git"
   },
   "engines": {
     "node": ">=16.x"
