@@ -15,21 +15,20 @@ const SideBar = () => (
         <h2>Kevin Kim</h2>
         <p><a href="mailto:kevincolour@gmail.com">kevincolour@gmail.com</a></p>
       </header>
+      <ContactIcons />
     </section>
 
     <section className="blurb">
-      <h2>About</h2>
-      <p>Hi, I&apos;m Kevin, you may know me - but probably not.
+      <p>Hi, I&apos;m Kevin. Stay a while, and listen!
       </p>
       <ul className="actions">
         <li>
-          {!window.location.pathname.includes('/resume') ? <Link to="/resume" className="button">Learn More</Link> : <Link to="/" className="button">About Me</Link>}
+          {!window.location.pathname.includes('/resume') ? <Link to="/resume" className="button">Learn More</Link> : <Link to="/" className="button">Home</Link>}
+        </li>
+        <li>
+          <Link to="/about" className="button">About Me</Link>
         </li>
       </ul>
-    </section>
-
-    <section id="footer">
-      <ContactIcons />
     </section>
   </section>
 );

@@ -1,29 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Validates the first half of an email address.
-const validateText = (text) => {
-  // NOTE: Passes RFC 5322 but not tested on google's standard.
-  // eslint-disable-next-line no-useless-escape
-  const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))$/;
-  return re.test(text) || text.length === 0;
-};
-
-const messages = [
-  'hi',
-  'hello',
-  'hola',
-  'you-can-email-me-at-literally-anything! Really',
-  'well, not anything. But most things',
-  'like-this',
-  'or-this',
-  'but not this :(  ',
-  'you.can.also.email.me.with.specific.topics.like',
-  'just-saying-hi',
-  'please-work-for-us',
-  'help',
-  'admin',
-  'or-I-really-like-your-website',
-  'thanks',
+let messages = [
+  'the bees knees',
+  'a spicy taco',
+  'the prime meridian',
+  'a good time at the movies',
+  'your best nightmare',
+  'the space between dream and reality',
+  'a solution to climate change',
+  'the neighbours golden retriever',
+  'a long walk on the beach',
+  'random thoughts of mine',
+  'your favourite deli',
+  'an internet argument',
+  'fantastical delirium',
+  'random thoughts of yours',
+  'an infinite loop',
 ];
 
 const useInterval = (callback, delay) => {
@@ -44,9 +36,9 @@ const useInterval = (callback, delay) => {
   }, [delay]);
 };
 
-const EmailLink = () => {
+const WordGenerator = () => {
   const hold = 50; // ticks to wait after message is complete before rendering next message
-  const delay = 50; // tick length in mS
+  const delay = 100; // tick length in mS
 
   const [idx, updateIter] = useState(0); // points to current message
   const [message, updateMessage] = useState(messages[idx]);
@@ -61,27 +53,28 @@ const EmailLink = () => {
       newChar = 0;
     }
     if (newIdx === messages.length) {
-      setIsActive(false);
-    } else {
-      updateMessage(messages[newIdx].slice(0, newChar));
-      updateIter(newIdx);
-      updateChar(newChar + 1);
+      newIdx = 0;
+      messages = messages
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
     }
+
+    updateMessage(messages[newIdx].slice(0, newChar));
+    updateIter(newIdx);
+    updateChar(newChar + 1);
   }, isActive ? delay : null);
 
   return (
-    <div
+    <span
       className="inline-container"
-      style={validateText(message) ? {} : { color: 'red' }}
+      style={{}}
       onMouseEnter={() => setIsActive(false)}
       onMouseLeave={() => (idx < messages.length) && setIsActive(true)}
     >
-      <a href={validateText(message) ? `mailto:${message}@mldangelo.com` : ''}>
-        <span>{message}</span>
-        <span>@mldangelo.com</span>
-      </a>
-    </div>
+      <span>{message}</span>
+    </span>
   );
 };
 
-export default EmailLink;
+export default WordGenerator;

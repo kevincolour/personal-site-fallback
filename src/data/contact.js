@@ -7,11 +7,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons/faEnvelope';
 // to add other icons.
 
 const data = [
-  {
-    link: 'https://github.com/kevincolour',
-    label: 'Github',
-    icon: faGithub,
-  },
+
   {
     link: 'https://facebook.com/kevincolour',
     label: 'Facebook',
@@ -31,6 +27,11 @@ const data = [
     link: 'mailto:kevincolour@gmail.com',
     label: 'Email',
     icon: faEnvelope,
+  },
+  {
+    link: 'https://github.com/kevincolour',
+    label: 'Github',
+    icon: faGithub,
   },
 ];
 

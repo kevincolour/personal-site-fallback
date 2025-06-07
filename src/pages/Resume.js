@@ -31,8 +31,8 @@ const Resume = () => (
     title="Resume"
     description="Kevin's Resume"
   >
-    <Document file={resumePDF}>
-      <Page pageNumber={1} />
+    <Document renderMode="svg" file={resumePDF}>
+      <Page renderTextLayer={false} pageNumber={1} />
     </Document>
     {/* <Document file="http://www.africau.edu/images/default/sample.pdf" /> */}
 
